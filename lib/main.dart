@@ -4,9 +4,11 @@ import 'package:food_delivery_apps/pages/welcome_page.dart';
 import 'package:food_delivery_apps/pages/home_page.dart';
 import 'package:food_delivery_apps/pages/cart_page.dart';
 import 'package:food_delivery_apps/pages/account_page.dart';
+import 'package:food_delivery_apps/theme_manager.dart/day_night.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'components/order_history_page.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -18,6 +20,8 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (context) => ImageProviderModel()),
         ChangeNotifierProvider(create: (context) => CartModel()),
+        ChangeNotifierProvider(
+            create: (context) => ThemeProvider()), // Add ThemeProvider
         // Other providers if any
       ],
       child: const MyApp(),
@@ -32,9 +36,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: Provider.of<ThemeProvider>(context).themeMode,
       home: const WelcomePage(),
       routes: {
         '/login': (context) => const WelcomePage(),
+        '/order_history': (context) => const OrderHistoryPage(),
       },
     );
   }

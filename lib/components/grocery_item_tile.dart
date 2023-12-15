@@ -2,6 +2,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
+import 'package:food_delivery_apps/utils/theme_shared.dart';
+// ignore: unused_import
 import 'package:google_fonts/google_fonts.dart';
 
 // ignore: must_be_immutable
@@ -31,7 +33,7 @@ class GroceryItemTile extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: color[100],
+          color: Colors.orange,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -51,12 +53,17 @@ class GroceryItemTile extends StatelessWidget {
             Text(
               itemName,
               style: const TextStyle(
-                fontSize: 16,
+                fontSize: 16, // Adjust the font size as needed
+                fontWeight: FontWeight.bold,
+                color: Colors.black, // Set the text color to black
               ),
             ),
             Text(
               description,
-              style: const TextStyle(fontSize: 10),
+              style: const TextStyle(
+                fontSize: 10,
+                color: Colors.black,
+              ),
               textAlign: TextAlign.center,
             ),
 

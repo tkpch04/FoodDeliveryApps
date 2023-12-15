@@ -59,7 +59,7 @@ class TransaksiBerhasil extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
+                backgroundColor: Color.fromARGB(255, 219, 134, 7),
               ),
               child: const Text(
                 'Kembali ke Homepage',

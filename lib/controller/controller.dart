@@ -39,7 +39,7 @@ class Controller {
 
       Fluttertoast.showToast(msg: "Akun berhasil dibuat");
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const LoginPage()),
+        MaterialPageRoute(builder: (context) => LoginPage()),
       );
     } catch (e) {
       Fluttertoast.showToast(msg: e.toString());

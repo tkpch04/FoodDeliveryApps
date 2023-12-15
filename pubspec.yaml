@@ -119,6 +119,7 @@ flutter:
     - assets/images/burgerfish.png
     - assets/images/kentang.png
     - assets/images/colacola.png
+    - assets/design/images/mantap.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

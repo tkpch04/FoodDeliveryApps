@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CartModel extends ChangeNotifier {
+class CartModel with ChangeNotifier {
   final List<List<dynamic>> _shopItems = const [
     // [ itemName, itemPrice, imagePath, color, description ]
     [
@@ -14,7 +14,7 @@ class CartModel extends ChangeNotifier {
       "Double Beef Burger",
       "30.000",
       "assets/images/burgerdoublebeef.png",
-      Colors.yellow,
+      Color.fromARGB(255, 128, 118, 29),
       "Burger dibuat dari daging sapi asli dengan double beef",
     ],
     [
@@ -49,7 +49,7 @@ class CartModel extends ChangeNotifier {
       "Aqua",
       "5.000",
       "assets/images/water.png",
-      Colors.orange,
+      Color.fromARGB(255, 190, 125, 26),
       "Aqua Air Mineral Murni",
     ],
     [
@@ -60,11 +60,13 @@ class CartModel extends ChangeNotifier {
       "Cola-Cola Seger",
     ],
   ];
+
   final List<List<String>> _cartItems = [];
+  final List<List<String>> _orderHistory = [];
 
-  get cartItems => _cartItems;
-
-  get shopItems => _shopItems;
+  List<List<String>> get orderHistory => _orderHistory;
+  List<List<String>> get cartItems => _cartItems;
+  List<List<dynamic>> get shopItems => _shopItems;
 
   void addItemToCart(int index) {
     final List<String> itemToAdd = [
@@ -165,30 +167,10 @@ class CartModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addnumbercart(int menuId, bool isAdd) {
-    int existingIndex = _cartItems.indexWhere(
-      (cartItem) => cartItem
-          .sublist(0, 2)
-          .every((element) => _shopItems[menuId].contains(element)),
-    );
-
-    if (existingIndex != -1) {
-      _cartItems[existingIndex][3] =
-          (int.parse(_cartItems[existingIndex][3]) + (isAdd ? 1 : -1))
-              .toString();
-
-      if (int.parse(_cartItems[existingIndex][3]) == 0) {
-        _cartItems.removeAt(existingIndex);
-      }
-    } else {
-      _cartItems.add([
-        _shopItems[menuId][0], // itemName
-        _shopItems[menuId][1], // itemPrice
-        _shopItems[menuId][2], // imagePath
-        (isAdd ? 1 : 0).toString(), // quantity
-      ]);
-    }
-
+  void recordOrder() {
+    _orderHistory.addAll(List.from(_cartItems));
+    print('Recorded Orders: $_orderHistory'); // Add this line for debugging
+    clearCart();
     notifyListeners();
   }
 }

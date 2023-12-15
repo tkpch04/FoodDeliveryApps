@@ -12,6 +12,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool _isHiddenPassword = true;
+
   void _togglePasswordView() {
     setState(() {
       _isHiddenPassword = !_isHiddenPassword;
@@ -63,10 +64,11 @@ class _LoginPageState extends State<LoginPage> {
                         controller: emailTextController,
                         keyboardType: TextInputType.emailAddress,
                         decoration: const InputDecoration(
-                            prefix: Icon(Icons.person_outline_outlined),
-                            labelText: ('Email'),
-                            hintText: ("1234@gmail.com"),
-                            border: OutlineInputBorder()),
+                          prefix: Icon(Icons.person_outline_outlined),
+                          labelText: ('Email'),
+                          hintText: ("1234@gmail.com"),
+                          border: OutlineInputBorder(),
+                        ),
                       ),
                       const SizedBox(
                         height: 20,
@@ -110,8 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ).copyWith(
                           minimumSize: MaterialStateProperty.all(
-                            const Size(double.infinity,
-                                50), // Atur tinggi sesuai kebutuhan
+                            const Size(double.infinity, 50),
                           ),
                         ),
                         child: Text(

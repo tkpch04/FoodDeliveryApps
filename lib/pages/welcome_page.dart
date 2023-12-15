@@ -22,7 +22,7 @@ class _WelcomePageState extends State<WelcomePage> {
             children: [
               Image.asset(
                 'assets/images/fast_food.png',
-                height: 333,
+                height: 360,
                 fit: BoxFit.fill,
               ),
               const SizedBox(
@@ -37,21 +37,51 @@ class _WelcomePageState extends State<WelcomePage> {
                 height: 15,
               ),
               Text(
-                'Pesan makanan ga perlu antri lama ',
-                style: blackTextStyle.copyWith(fontSize: 20),
+                'Pesan makanan gak perlu antri lama       pesan di sini dan tunggu sampai diantar',
+                style: blackTextStyle.copyWith(fontSize: 17.5),
+                textAlign: TextAlign.center,
               ),
               const SizedBox(
-                height: 51,
+                height: 70,
               ),
               SizedBox(
-                height: 60,
+                height: 45,
+                width: MediaQuery.of(context).size.width - 2 * defaultMargin,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          side: const BorderSide(color: Colors.black54),
+                          borderRadius: BorderRadius.circular(15))),
+                  child: Text(
+                    'Login',
+                    style: blackTextStyle.copyWith(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              SizedBox(
+                height: 45,
                 width: MediaQuery.of(context).size.width - 2 * defaultMargin,
                 child: ElevatedButton(
                   onPressed: () {
                     // modal tampilan registrasi screen
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const Registrasi()),
+                      MaterialPageRoute(
+                          builder: (context) => const Registrasi()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -69,33 +99,6 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 15,
-              ),
-              SizedBox(
-                height: 60,
-                width: MediaQuery.of(context).size.width - 2 * defaultMargin,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const LoginPage()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          side: const BorderSide(color: Colors.black54),
-                          borderRadius: BorderRadius.circular(15))),
-                  child: Text(
-                    'Login',
-                    style: blackTextStyle.copyWith(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black),
-                  ),
-                ),
-              )
             ]),
       ),
     );
